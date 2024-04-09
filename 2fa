@@ -1,0 +1,38 @@
+// Приклад коду C++ для системи багатофакторної аутентифікації
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+// Клас для зберігання облікових даних користувача
+class UserCredentials {
+public:
+    string username;
+    string password;
+    vector<string> biometricData;
+    string token;
+
+    bool authenticate(string pass, vector<string> bio, string tok) {
+        return password == pass && equal(biometricData.begin(), biometricData.end(), bio.begin()) && token == tok;
+    }
+};
+
+int main() {
+    // Створення об'єкта для користувача
+    UserCredentials user;
+    user.username = "johndoe";
+    user.password = "mypassword";
+    user.biometricData = {"fingerprint", "iris_scan"};
+    user.token = "12345abcde";
+
+    // Перевірка автентифікації
+    if (user.authenticate("mypassword", {"fingerprint", "iris_scan"}, "12345abcde")) {
+        cout << "Успішна автентифікація!" << endl;
+    } else {
+        cout << "Невдала автентифікація." << endl;
+    }
+
+    return 0;
+}
