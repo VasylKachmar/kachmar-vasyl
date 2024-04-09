@@ -22,15 +22,16 @@ public:
 int main() {
     // Створення об'єкта для користувача
     UserCredentials user;
-    user.username = "johndoe";
-    user.password = "mypassword";
-    user.biometricData = {"fingerprint", "iris_scan"};
+    user.username = "Kachmar Vasyl";
+    user.password = "qwerty123";
+    user.biometricData = { "fingerprint", "iris_scan" };
     user.token = "12345abcde";
 
     // Перевірка автентифікації
-    if (user.authenticate("mypassword", {"fingerprint", "iris_scan"}, "12345abcde")) {
+    if (user.authenticate("qwerty123", { "fingerprint", "iris_scan" }, "12345abcde")) {
         cout << "Успішна автентифікація!" << endl;
-    } else {
+    }
+    else {
         cout << "Невдала автентифікація." << endl;
     }
 
